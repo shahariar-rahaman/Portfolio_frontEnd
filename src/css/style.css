@@ -1,0 +1,9 @@
+.size{
+    height: 650px;
+}
+.navLink{
+    text-decoration:none;
+    font-size:18px;
+    font-weight: bold;
+    color: black;
+}
