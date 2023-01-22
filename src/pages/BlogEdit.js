@@ -40,7 +40,8 @@ const BlogEdit = () => {
       }
       setSpin(true)
     }
-    const handleSubmit = ()=>{
+    const handleSubmit = (e)=>{
+    e.preventDefault()
     async function blogPost(){
       const {data} = await axios.post(`${URL}/blogEdit`,{
         name:state.userInfo.name,

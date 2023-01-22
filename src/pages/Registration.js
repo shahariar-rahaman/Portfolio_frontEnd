@@ -11,7 +11,7 @@ const Registration = () => {
     const [emailErr,setEmailErr] = useState("")
     const [passwordErr,setPasswordErr] = useState("")
     const [confirmPasswordErr,setConfirmPasswordErr] = useState("")
-    const url=process.env.REACT_APP_BASE_URL
+    const URL=process.env.REACT_APP_BASE_URL
     const navigator = useNavigate()
     
     const handleSubmit=(e)=>{
@@ -31,7 +31,7 @@ const Registration = () => {
         }
         else{
                async function admin(){
-                        await axios.post(`${url}/registration`,{
+                        await axios.post(`${URL}/registration`,{
                             name:name,
                             email:email,
                             password:password,

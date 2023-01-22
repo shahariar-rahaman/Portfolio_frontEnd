@@ -4,14 +4,14 @@ import {Link, useNavigate} from 'react-router-dom'
 import { store } from '../ContextProvider'
 
 const Header = () => {
-// const[updatetime,setUpdateTime] = useState("")
-// const time = ()=>{
-//   const date = new Date().toLocaleTimeString();
-//   return date
-// }
-// setInterval(()=>{
-//   setUpdateTime(time())
-// },0)
+const[updatetime,setUpdateTime] = useState("")
+const time = ()=>{
+  const date = new Date().toLocaleTimeString();
+  return date
+}
+setInterval(()=>{
+  setUpdateTime(time())
+},0)
   const navigator = useNavigate()
   const {state,dispatch}=useContext(store)
     const styles={
@@ -27,7 +27,7 @@ const Header = () => {
     <Navbar expand="lg" className='nav-area'>
       <Container className="position">
         <Link to="/" className='navLink'><Navbar.Brand><span className='icon'>Shahariar</span><span className='icon nav-icon'>Rahaman</span></Navbar.Brand></Link>
-          {/* <span className='time'>{updatetime}</span> */}
+          <span className='time'>{updatetime}</span>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="m-auto d-flex align-items-center">

@@ -1,15 +1,14 @@
 import React from 'react'
 import { Container,Card,Button,Row,Col } from 'react-bootstrap'
-import figma from '../data/figmaData'
 import { useState,useEffect } from 'react'
 import axios from 'axios'
 import { FaLink} from 'react-icons/fa';
 const ReactProject = () => {
   const [reactData,setReactData] = useState([])
-  const url=process.env.REACT_APP_BASE_URL
+  const URL=process.env.REACT_APP_BASE_URL
   useEffect(()=>{
     async function react(){
-      let {data} = await axios.get(`${url}/reatEdit`)
+      let {data} = await axios.get(`${URL}/reactEdit`)
       setReactData(data)
     }
     react()

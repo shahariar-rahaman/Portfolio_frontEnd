@@ -12,7 +12,7 @@ const Login = () => {
     const [passwordErr,setPasswordErr] = useState("")
     const [wrong,setWrong]=useState("")
     const navigator = useNavigate()
-    const url=process.env.REACT_APP_BASE_URL
+    const URL=process.env.REACT_APP_BASE_URL
     
     const handleLogin=(e)=>{
     e.preventDefault()
@@ -25,7 +25,7 @@ const Login = () => {
      
         else{
                async function admin(){
-                        const {data}=await axios.post(`${url}/login`,{
+                        const {data}=await axios.post(`${URL}/login`,{
                             email:email,
                             password:password
                         })

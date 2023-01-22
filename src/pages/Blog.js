@@ -6,11 +6,11 @@ const Blog = () => {
 const {state,dispatch} = useContext(store)
 
 const [blogData,setBlogData] = useState([])
-const url=process.env.REACT_APP_BASE_URL
+const URL=process.env.REACT_APP_BASE_URL
 console.log(blogData)
 useEffect(()=>{
     async function blog(){
-    const {data} = await axios.get(`${url}/blogEdit`)
+    const {data} = await axios.get(`${URL}/blogEdit`)
     setBlogData(data)
 }blog()
 },[])

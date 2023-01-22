@@ -1,20 +1,16 @@
-import React, { useContext } from 'react'
 import { Container,Form,Button,InputGroup } from 'react-bootstrap'
-import {store} from '../ContextProvider'
 import JoditEditor from 'jodit-react';
 import { useState, useRef} from 'react'
 import axios from 'axios';
 
 const ReactEdit = () => {
     const editor = useRef(null);
-    const {state,dispatch} = useContext(store)
     const [content, setContent] = useState('')
     const [url,setUrl] = useState('')
     const [link,setLink] = useState('')
-    const [loading,setLoading] = useState(false)
     const[title,setTitle]=useState("")
     const [fileData, setFileData] = useState(null)
-    const urL=process.env.REACT_APP_BASE_URL
+    const URL=process.env.REACT_APP_BASE_URL
     const handleFileChange = (e) => {
           const file = e.target.files[0];
           const bodyFormData = new FormData();
@@ -23,20 +19,17 @@ const ReactEdit = () => {
       }
       const handleUpload = async (e) => {
       e.preventDefault()
-        setLoading(true)
         const config = {
             headers: {
                 'Content-Type': 'multipart/form-data',
             }
         }
         try {
-            const { data } = await axios.post(`${urL}/upload`, fileData, config)
+            const { data } = await axios.post(`${URL}/upload`, fileData, config)
             setUrl(data.secure_url)
-            setLoading(false)
         }
         catch(err){
           console.log(err)
-          setLoading(false)
         }
       }
      //Comment
@@ -88,7 +81,7 @@ const ReactEdit = () => {
       const handleSubmit = (e)=>{
       e.preventDefault()
         async function figmaPost(){
-          const {data} = await axios.post(`${urL}/reactEdit`,{
+          await axios.post(`${URL}/reactEdit`,{
             title:title,
             description:content,
             link:link,
