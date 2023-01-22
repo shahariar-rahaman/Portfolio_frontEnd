@@ -4,11 +4,11 @@ import { FaLink} from 'react-icons/fa';
 import { Container,Card,Button,Row,Col } from 'react-bootstrap'
 const Basic = () => {
   const [basicData,setBasicData] = useState([])
+  const URL=process.env.REACT_APP_BASE_URL
   useEffect(()=>{
     async function basic(){
-      let {data} = await axios.get("http://localhost:8000/basic")
+      let {data} = await axios.get(`${URL}/basic`)
       setBasicData(data)
-      console.log(data)
     }
     basic()
   },[])

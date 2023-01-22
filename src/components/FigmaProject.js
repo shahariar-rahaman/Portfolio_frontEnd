@@ -5,9 +5,10 @@ import { FaLink} from 'react-icons/fa';
 
 const FigmaProject = () => {
   const [figmaData,setFigmaData] = useState([])
+  const URL=process.env.REACT_APP_BASE_URL
   useEffect(()=>{
     async function figma(){
-      let {data} = await axios.get("http://localhost:8000/figmaEdit")
+      let {data} = await axios.get(`${URL}/figmaEdit`)
       setFigmaData(data)
     }
     figma()
@@ -20,7 +21,7 @@ const FigmaProject = () => {
         {
             figmaData.map(item=>(
                 <Col lg={3} className="mt-4" key={item._id}>
-                <Card className='cardShadow'>
+                <Card className='cardShadow h-100'>
               <Card.Img className="image-height" variant="top" src={item.image} />
               <Card.Body>
                 <Card.Title><span className='cardTitle'>{item.title}</span></Card.Title>
@@ -33,7 +34,7 @@ const FigmaProject = () => {
                 </span>
               ))}
                 <div className="d-flex justify-content-center">
-                <Button className='mt-3 cardButton d-flex align-items-center'><FaLink/><span className="visit">Visit</span></Button>
+                <Button className='mt-3 cardButton d-flex align-items-center'><FaLink/><span className="visit"><a htef='https://www.figma.com/proto/aBksKQCIV2nk6jsOSaccjl/Bonsin?node-id=2%3A2'>Visit</a></span></Button>
                 </div>
               </Card.Body>
             </Card>

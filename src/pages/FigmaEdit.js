@@ -14,6 +14,7 @@ const FigmaEdit = () => {
     const [loading,setLoading] = useState(false)
     const[title,setTitle]=useState("")
     const [fileData, setFileData] = useState(null)
+    const URL=process.env.REACT_APP_BASE_URL
     const handleFileChange = (e) => {
           const file = e.target.files[0];
           const bodyFormData = new FormData();
@@ -29,7 +30,7 @@ const FigmaEdit = () => {
             }
         }
         try {
-            const { data } = await axios.post(`http://localhost:8000/upload`, fileData, config)
+            const { data } = await axios.post(`${URL}/upload`, fileData, config)
             setUrl(data.secure_url)
             setLoading(false)
         }
@@ -40,20 +41,19 @@ const FigmaEdit = () => {
       }
      //Comment
       let projectArr =[]
-      console.log(projectArr)
       const handleFigma=()=>{
-        if(projectArr.indexOf("Figma") >=0){
-            projectArr.splice(projectArr.indexOf("Figma"),1)
+        if(projectArr.indexOf("Figma ") >=0){
+            projectArr.splice(projectArr.indexOf("Figma "),1)
         }
         else{
-            projectArr.push("Figma")
+            projectArr.push("Figma ")
         }
         console.log(projectArr)
       }
       const handleHtml=()=>{
         console.log("Hi")
-        if(projectArr.indexOf("Html/CSS") >= 0){
-            projectArr.splice(projectArr.indexOf("Html/CSS"),1)
+        if(projectArr.indexOf("Html/CSS ") >= 0){
+            projectArr.splice(projectArr.indexOf("Html/CSS "),1)
         }
         else{
             projectArr.push("Html/CSS")
@@ -62,11 +62,11 @@ const FigmaEdit = () => {
       }
       const handleReact=()=>{
         console.log("Hi")
-        if(projectArr.indexOf("React") >= 0 ){
-            projectArr.splice(projectArr.indexOf("React"),1)
+        if(projectArr.indexOf("React ") >= 0 ){
+            projectArr.splice(projectArr.indexOf("React "),1)
         }
         else{
-            projectArr.push("React")
+            projectArr.push("React ")
         }
         console.log(projectArr)
       }
@@ -80,13 +80,11 @@ const FigmaEdit = () => {
         }
         console.log(projectArr)
       }
-      
-      console.log(projectArr)
       //Comment
       const handleSubmit = (e)=>{
       e.preventDefault()
         async function figmaPost(){
-          const {data} = await axios.post("http://localhost:8000/figmaEdit",{
+          const {data} = await axios.post(`${URL}/figmaEdit`,{
             title:title,
             description:content,
             link:link,
@@ -110,7 +108,7 @@ const FigmaEdit = () => {
 			onBlur={newContent => setContent(newContent)} 
 			onChange={newContent => {}}/>
 		<Form.Group className="mt-3" controlId="formBasicEmail">
-            <Form.Control type="text" placeholder="Title" onChange={(e)=>setLink(e.target.value)}/>
+            <Form.Control type="link" placeholder="link" onChange={(e)=>setLink(e.target.value)}/>
           </Form.Group>
     <InputGroup size="sm" className="mt-3">
         <Form.Control

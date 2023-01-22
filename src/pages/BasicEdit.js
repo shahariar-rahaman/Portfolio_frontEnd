@@ -6,6 +6,7 @@ import { useState, useRef} from 'react'
 import axios from 'axios';
 
 const FigmaEdit = () => {
+    const URL=process.env.REACT_APP_BASE_URL
     const editor = useRef(null);
     const [content, setContent] = useState('')
     const [url,setUrl] = useState('')
@@ -28,7 +29,7 @@ const FigmaEdit = () => {
             }
         }
         try {
-            const { data } = await axios.post(`http://localhost:8000/upload`, fileData, config)
+            const { data } = await axios.post(`${URL}/upload`, fileData, config)
             setUrl(data.secure_url)
             setLoading(false)
         }
@@ -86,7 +87,7 @@ const FigmaEdit = () => {
       const handleSubmit = (e)=>{
       e.preventDefault()
         async function basicPost(){
-          const {data} = await axios.post("http://localhost:8000/basic",{
+          const {data} = await axios.post(`${URL}/basic`,{
             title:title,
             description:content,
             link:link,

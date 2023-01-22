@@ -6,9 +6,10 @@ import axios from 'axios'
 import { FaLink} from 'react-icons/fa';
 const ReactProject = () => {
   const [reactData,setReactData] = useState([])
+  const url=process.env.REACT_APP_BASE_URL
   useEffect(()=>{
     async function react(){
-      let {data} = await axios.get("http://localhost:8000/reactEdit")
+      let {data} = await axios.get(`${url}/reatEdit`)
       setReactData(data)
     }
     react()

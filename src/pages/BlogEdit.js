@@ -14,6 +14,7 @@ const BlogEdit = () => {
   const [loading,setLoading] = useState(false)
   const[title,setTitle]=useState("")
   const [fileData, setFileData] = useState(null)
+  const URL=process.env.REACT_APP_BASE_URL
   const handleFileChange = (e) => {
         const file = e.target.files[0];
         const bodyFormData = new FormData();
@@ -29,7 +30,7 @@ const BlogEdit = () => {
           }
       }
       try {
-          const { data } = await axios.post(`http://localhost:8000/upload`, fileData, config)
+          const { data } = await axios.post(`${URL}/upload`, fileData, config)
           setUrl(data.secure_url)
           setLoading(false)
       }
@@ -41,7 +42,7 @@ const BlogEdit = () => {
     }
     const handleSubmit = ()=>{
     async function blogPost(){
-      const {data} = await axios.post("http://localhost:8000/blogEdit",{
+      const {data} = await axios.post(`${URL}/blogEdit`,{
         name:state.userInfo.name,
         title:title,
         description:content,

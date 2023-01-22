@@ -14,6 +14,7 @@ const ReactEdit = () => {
     const [loading,setLoading] = useState(false)
     const[title,setTitle]=useState("")
     const [fileData, setFileData] = useState(null)
+    const urL=process.env.REACT_APP_BASE_URL
     const handleFileChange = (e) => {
           const file = e.target.files[0];
           const bodyFormData = new FormData();
@@ -29,7 +30,7 @@ const ReactEdit = () => {
             }
         }
         try {
-            const { data } = await axios.post(`http://localhost:8000/upload`, fileData, config)
+            const { data } = await axios.post(`${urL}/upload`, fileData, config)
             setUrl(data.secure_url)
             setLoading(false)
         }
@@ -87,7 +88,7 @@ const ReactEdit = () => {
       const handleSubmit = (e)=>{
       e.preventDefault()
         async function figmaPost(){
-          const {data} = await axios.post("http://localhost:8000/ReactEdit",{
+          const {data} = await axios.post(`${urL}/reactEdit`,{
             title:title,
             description:content,
             link:link,
