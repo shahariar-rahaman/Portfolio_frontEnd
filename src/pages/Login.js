@@ -44,9 +44,10 @@ const Login = () => {
 
 
   return (
-    <>
     <Container>
-    <h3>Login</h3>
+    <div class="registrationLog">
+    <p className='regLog'>Login</p>
+    <div className='regLogForm'>
     <Form.Group className="mb-3">
         <Form.Control onChange={(e)=>setEmail(e.target.value)} placeholder="Email" value={email} type="email"/>
         {
@@ -65,20 +66,23 @@ const Login = () => {
             ""
         }
     </Form.Group>
+    </div>
     {
         wrong?
         <Form.Text className="text-muted err">{passwordErr}</Form.Text>
         :
         ""
     }
+    <div className='regLogSubmit'>
     <Button onClick={handleLogin} variant="primary" type="submit">
         Submit
       </Button>
-      <div>
-      <p>Don't Have account?</p><Link to="/registration">Registration</Link>
+      </div>
+      <div className='already'>
+      <p>Don't Have account?</p><Link to="/registration" className="navLink"><span className="loginReg">Registration</span></Link>
+      </div>
       </div>
     </Container>
-  </>
   )
 }
 

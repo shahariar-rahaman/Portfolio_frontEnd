@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { Container,Form,Button,InputGroup } from 'react-bootstrap'
+import { Container,Form,Button,InputGroup,Spinner } from 'react-bootstrap'
 import {store} from '../ContextProvider'
 import JoditEditor from 'jodit-react';
 import { useState, useRef} from 'react'
@@ -9,6 +9,7 @@ const BlogEdit = () => {
   const editor = useRef(null);
   const {state,dispatch} = useContext(store)
   const [content, setContent] = useState('')
+  const[spin,setSpin] = useState(false)
   const [url,setUrl] = useState('')
   const [loading,setLoading] = useState(false)
   const[title,setTitle]=useState("")
@@ -36,6 +37,7 @@ const BlogEdit = () => {
         console.log(err)
         setLoading(false)
       }
+      setSpin(true)
     }
     const handleSubmit = ()=>{
     async function blogPost(){
@@ -52,6 +54,9 @@ const BlogEdit = () => {
   return (
   <>
     <Container>
+    <div className='blogEditor'>
+        <p className='content'>Post Your Content</p>
+        <div className='contentWidth'>
         {
           state.userInfo?
           <Form>
@@ -64,22 +69,41 @@ const BlogEdit = () => {
 			tabIndex={1} 
 			onBlur={newContent => setContent(newContent)} 
 			onChange={newContent => {}}/>
-		
     <InputGroup size="sm" className="mt-3">
         <Form.Control
           aria-label="Small"
           aria-describedby="inputGroup-sizing-sm" type='file' onChange={handleFileChange}/>
-          <button onClick={handleUpload} >Upload</button>
+          <Button className='buttonStyle uploadSumission' onClick={handleUpload} >Upload</Button>
         </InputGroup>
-        
-          <Button onClick={handleSubmit} variant="primary" type="submit" className="mt-3">
+        {
+          spin?
+        <div className='submitButton'>
+          <Button className="buttonStyle mt-3" onClick={handleSubmit} type="submit">
             Submit
           </Button>
+          </div>
+          :
+          <div className='submitButton'>
+          <Button className="buttonStyle mt-3" disabled>
+        <Spinner
+          as="span"
+          animation="grow"
+          size="sm"
+          role="status"
+          aria-hidden="true"
+        />
+        Loading...
+      </Button>
+      </div>
+        }
+        
         </Form>
           
           :
-          <h1>Please Login At First</h1>
+          ""
         }
+        </div>
+        </div>
     </Container>
   </>
   )

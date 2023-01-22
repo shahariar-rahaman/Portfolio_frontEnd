@@ -10,6 +10,7 @@ const FigmaEdit = () => {
     const {state,dispatch} = useContext(store)
     const [content, setContent] = useState('')
     const [url,setUrl] = useState('')
+    const [link,setLink] = useState('')
     const [loading,setLoading] = useState(false)
     const[title,setTitle]=useState("")
     const [fileData, setFileData] = useState(null)
@@ -41,7 +42,6 @@ const FigmaEdit = () => {
       let projectArr =[]
       console.log(projectArr)
       const handleFigma=()=>{
-        console.log("Hi")
         if(projectArr.indexOf("Figma") >=0){
             projectArr.splice(projectArr.indexOf("Figma"),1)
         }
@@ -89,6 +89,7 @@ const FigmaEdit = () => {
           const {data} = await axios.post("http://localhost:8000/figmaEdit",{
             title:title,
             description:content,
+            link:link,
             image:url,
             project:projectArr
             
@@ -108,7 +109,9 @@ const FigmaEdit = () => {
 			tabIndex={1} 
 			onBlur={newContent => setContent(newContent)} 
 			onChange={newContent => {}}/>
-		
+		<Form.Group className="mt-3" controlId="formBasicEmail">
+            <Form.Control type="text" placeholder="Title" onChange={(e)=>setLink(e.target.value)}/>
+          </Form.Group>
     <InputGroup size="sm" className="mt-3">
         <Form.Control
           aria-label="Small"

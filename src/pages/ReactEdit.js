@@ -10,6 +10,7 @@ const ReactEdit = () => {
     const {state,dispatch} = useContext(store)
     const [content, setContent] = useState('')
     const [url,setUrl] = useState('')
+    const [link,setLink] = useState('')
     const [loading,setLoading] = useState(false)
     const[title,setTitle]=useState("")
     const [fileData, setFileData] = useState(null)
@@ -89,6 +90,7 @@ const ReactEdit = () => {
           const {data} = await axios.post("http://localhost:8000/ReactEdit",{
             title:title,
             description:content,
+            link:link,
             image:url,
             project:projectArr
             
@@ -108,7 +110,9 @@ const ReactEdit = () => {
 			tabIndex={1} 
 			onBlur={newContent => setContent(newContent)} 
 			onChange={newContent => {}}/>
-		
+		 <Form.Group className="mt-3" controlId="formBasicEmail">
+            <Form.Control type="text" placeholder="Title" onChange={(e)=>setLink(e.target.value)}/>
+          </Form.Group>
     <InputGroup size="sm" className="mt-3">
         <Form.Control
           aria-label="Small"

@@ -1,9 +1,180 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=East+Sea+Dokdo&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=East+Sea+Dokdo&family=Poppins:wght@400&display=swap');
+
+*{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+}
 .size{
     height: 650px;
 }
 .navLink{
     text-decoration:none;
-    font-size:18px;
-    font-weight: bold;
+}
+.image-height{
+    height:210px;
+}
+.nav-area{
+    padding: 10px 0;
+    background-color: #EA3A60;
+}
+.icon{
+    color: white;
+    font-family: 'Dancing Script', cursive;
+    font-size: 35px;
+    font-weight:500;
+}
+.nav-icon{
     color: black;
+}
+.navButton{
+    color: white;
+    padding: 0 10px;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    transition: all linear 0.4s;
+}
+.navButton:hover{
+    color:black
+}
+.regLog{
+    font-family: 'Poppins', sans-serif;
+    font-size: 40px;
+    font-weight:bolder;
+    text-align: center;
+    background-color: #EA3A60;
+    color: white;
+}
+.regLogForm{
+    width:fit-content;
+    margin: 0 auto;
+}
+.regLogSubmit{
+    display: flex;
+    justify-content: center;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+}
+.regLogSubmit Button{
+    background-color: #ffffff!important;
+    border: 1px solid black;
+    transition: all linear .4s;
+    color:black;
+    margin:10px 0;
+}
+.regLogSubmit Button:hover {
+    background-color: #EA3A60!important;
+    border: none;
+}
+.already{
+    display: flex;
+    justify-content: center;
+}
+.loginReg:hover{
+ color: #EA3A60;   
+}
+.registrationLog{
+    border: 5px solid #EA3A60;
+    margin: 100px;
+    border-radius: 6px;
+}
+.position{
+    position: relative;
+}
+.time {
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    position: absolute;
+    top: 13px;
+    left: 362px;
+}
+.dropdownStyle{
+    font-size: 15px;
+    font-family: 'Poppins', sans-serif;
+    transition: all linear .4s;
+    color: black;
+}
+.dropdownStyle:hover{
+    font-size: 20px;
+    color: #EA3A60;
+}
+
+.figmaProject{
+    font-size: 40px;
+    font-family: 'Poppins', sans-serif;
+    border-bottom: 3px solid #EA3A60;
+    display: inline;
+    font-weight: bold;
+}
+.cardTitle{
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+}
+.description{
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    color: rgb(70, 67, 67);
+}
+.tag{
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    color: black;
+    font-weight: bolder;
+}
+.visit{
+    margin-left:5px;
+    font-size:15px;
+    display: inline-block;
+}
+.cardButton{
+    background-color: #EA3A60;
+    color: #ffffff;
+    border: none;
+    transition: all linear .4s;
+}
+.cardButton:hover{
+    background-color: #ffffff;
+    color: #EA3A60;
+}
+.cardShadow{
+    border: none;
+    box-shadow: 10px 5px 5px #EA3A60;
+}
+.content{
+    text-align: center;
+    font-size: 40px;
+    font-weight: 900;
+    background-color: #EA3A60;
+    color: white;
+}
+.blogEditor{
+    margin: 100px 0;
+    border: 5px solid #EA3A60;
+    border-radius: 6px;
+}
+.contentWidth{
+    margin: 0 auto;
+    padding: 15px;
+}
+.buttonStyle{
+    background-color: #EA3A60;
+    border: none;
+}
+.submitButton{
+    display: flex;
+    justify-content: end;
+    transition: all linear .4s;
+}
+.submitButton:hover{
+    background-color: white;
+}
+.reactBackround{
+    background-color: #F8F8F8;
+}
+.reactPadding{
+    padding: 50px 0;
 }

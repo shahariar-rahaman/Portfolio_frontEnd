@@ -48,9 +48,10 @@ const Registration = () => {
         
     }
     return (
-    <>
     <Container>
-    <h3>Registration</h3>
+    <div className='registrationLog'>
+    <p className='regLog'>Registration</p>
+    <div className='regLogForm'>
     <Form.Group className="mb-3">
         <Form.Control onChange={(e)=>setName(e.target.value)} placeholder="Name" value={name} type="name"/>
         {
@@ -87,14 +88,17 @@ const Registration = () => {
             ""
         }
     </Form.Group>
-    <Button onClick={handleSubmit} variant="primary" type="submit">
+    </div>
+    <div className='regLogSubmit'>
+    <Button onClick={handleSubmit} type="submit">
         Submit
       </Button>
-      <div>
-      <p>Already Have an account?</p><Link to="/login">Login</Link>
+      </div>
+      <div className='already'>
+      <p>Already Have an account?</p><Link to="/login" className="navLink"><span className="loginReg">Login</span></Link>
+      </div>
       </div>
     </Container>
-  </>
   )
 }
 

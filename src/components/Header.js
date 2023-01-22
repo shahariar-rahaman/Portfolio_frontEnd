@@ -1,9 +1,17 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import {Navbar,Nav,Container,NavDropdown} from 'react-bootstrap'
 import {Link, useNavigate} from 'react-router-dom'
 import { store } from '../ContextProvider'
 
 const Header = () => {
+const[updatetime,setUpdateTime] = useState("")
+const time = ()=>{
+  const date = new Date().toLocaleTimeString();
+  return date
+}
+setInterval(()=>{
+  setUpdateTime(time())
+},0)
   const navigator = useNavigate()
   const {state,dispatch}=useContext(store)
     const styles={
@@ -16,36 +24,38 @@ const Header = () => {
       navigator("/");
     };
   return (
-    <Navbar expand="lg">
-      <Container>
-        <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+    <Navbar expand="lg" className='nav-area'>
+      <Container className="position">
+        <Link to="/" className='navLink'><Navbar.Brand><span className='icon'>Shahariar</span><span className='icon nav-icon'>Rahaman</span></Navbar.Brand></Link>
+          <span className='time'>{updatetime}</span>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="m-auto d-flex align-items-center">
-            <Nav.Link ><Link className='navLink' to="/">Home</Link></Nav.Link>
-            <Link className='navLink' to="about"><Nav.Link >About</Nav.Link></Link>
-            <Nav.Link><Link className='navLink' to="/blog">My Blog</Link></Nav.Link>
+            <Nav.Link ><Link className='navLink' to="/"><span className='navButton'>Home</span></Link></Nav.Link>
+            <Nav.Link ><Link className='navLink' to="about"><span className='navButton'>About</span></Link></Nav.Link>
+            <Nav.Link ><Link className='navLink' to="about"><span className='navButton'>Resume</span></Link></Nav.Link>
+            <Nav.Link><Link className='navLink' to="/blog"><span className='navButton'>My Blog</span></Link></Nav.Link>
           </Nav>
           {
             state.userInfo?
-            <NavDropdown title={state.userInfo.name} id="basic-nav-dropdown">
+                <NavDropdown title={state.userInfo.name} id="nav-dropdown">
               {
                   state.userInfo.is_admin?
                   <>
-                  <Link className='navLink' to="/blogEdit"><NavDropdown.Item href="#action/3.1">Blog Post</NavDropdown.Item></Link>
-                  <Link className='navLink' to="/figmaEdit"><NavDropdown.Item href="#action/3.2">Figma Post</NavDropdown.Item></Link>
-                  <Link className='navLink' to="/reactEdit"><NavDropdown.Item href="#action/3.3">React Post</NavDropdown.Item></Link>
-                  <Link className='navLink' to="/basicEdit"><NavDropdown.Item href="#action/3.3">Basic Post</NavDropdown.Item></Link>
+                  <NavDropdown.Item ><Link className='navLink dropdownStyle' to="/blogEdit">Blog Post</Link></NavDropdown.Item>
+                  <NavDropdown.Item ><Link className='navLink dropdownStyle' to="/figmaEdit">Figma Post</Link></NavDropdown.Item>
+                  <NavDropdown.Item ><Link className='navLink dropdownStyle' to="/reactEdit">React Post</Link></NavDropdown.Item>
+                  <NavDropdown.Item ><Link className='navLink dropdownStyle' to="/basicEdit">Basic Post</Link></NavDropdown.Item>
                   </>
                   :
                   <Link className='navLink' to="/blogEdit"><NavDropdown.Item href="#action/3.1">Blog Post</NavDropdown.Item></Link>
 
               }
               <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4" onClick={handleLogout}>Log Out</NavDropdown.Item>
+              <NavDropdown.Item onClick={handleLogout}>Log Out</NavDropdown.Item>
             </NavDropdown>
             :
-            <Link className='navLink' to="/registration">SignIn/Login</Link>
+            <Link className='navLink' to="/registration"><span className='navButton'>SignIn/Login</span></Link>
           }
         </Navbar.Collapse>
       </Container>
