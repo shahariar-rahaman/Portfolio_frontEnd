@@ -21,7 +21,7 @@ const ReactProject = () => {
         {
             reactData.map(item=>(
                 <Col lg={3} className="mt-4" key={item._id}>
-                <Card className='cardShadow'>
+                <Card className='cardShadow h-100'>
               <Card.Img className="image-height" variant="top" src={item.image} />
               <Card.Body>
                 <Card.Title><span className='cardTitle'>{item.title}</span></Card.Title>

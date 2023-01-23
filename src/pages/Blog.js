@@ -4,7 +4,6 @@ import { Container,Card,ListGroup,Button } from 'react-bootstrap'
 import { store } from '../ContextProvider'
 const Blog = () => {
 const {state,dispatch} = useContext(store)
-
 const [blogData,setBlogData] = useState([])
 const URL=process.env.REACT_APP_BASE_URL
 console.log(blogData)
@@ -14,11 +13,12 @@ useEffect(()=>{
     setBlogData(data)
 }blog()
 },[])
+console.log(blogData)
 
-
-const handleDelete = () =>{
-
-
+const handleDelete = async (id) =>{
+    const {data} = await axios.delete(`${URL}/blogEdit/${id}`)
+    const updatetBlog = blogData.filter((response)=>response._id!==data._id)
+    setBlogData(updatetBlog)
 }
 
   return (
@@ -39,7 +39,7 @@ const handleDelete = () =>{
           </Card>
           {
             state.userInfo!==null && item.name===state.userInfo.name?
-            <Button className="mt-3" onClick={handleDelete}>Delete</Button>
+            <Button className="mt-3" onClick={()=>handleDelete(item._id)}>Delete</Button>
             :
             <Button className="mt-3" disabled>Delete</Button>
             

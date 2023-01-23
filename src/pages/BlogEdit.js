@@ -40,9 +40,9 @@ const BlogEdit = () => {
       }
       setSpin(true)
     }
-    const handleSubmit = (e)=>{
-    e.preventDefault()
-    async function blogPost(){
+  
+    async function handleSubmit(e){
+      e.preventDefault()
       const {data} = await axios.post(`${URL}/blogEdit`,{
         name:state.userInfo.name,
         title:title,
@@ -50,8 +50,6 @@ const BlogEdit = () => {
         image:url
         
       })
-    }
-    blogPost()
     }
   return (
   <>

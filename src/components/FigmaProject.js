@@ -34,7 +34,7 @@ const FigmaProject = () => {
                 </span>
               ))}
                 <div className="d-flex justify-content-center">
-                <Button className='mt-3 cardButton d-flex align-items-center'><FaLink/><span className="visit"><a htef='https://www.figma.com/proto/aBksKQCIV2nk6jsOSaccjl/Bonsin?node-id=2%3A2'>Visit</a></span></Button>
+                <Button className='mt-3 cardButton d-flex align-items-center' href={item.link}><FaLink/><span className="visit">Visit</span></Button>
                 </div>
               </Card.Body>
             </Card>
