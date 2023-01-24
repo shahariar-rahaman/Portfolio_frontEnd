@@ -29,7 +29,7 @@ const Login = () => {
                             email:email,
                             password:password
                         })
-                    
+                        console.log(data)
                         dispatch({type:"user_login",payload:data.userInfo})
                         localStorage.setItem("userInfo",JSON.stringify(data.userInfo))
                         navigator("/")

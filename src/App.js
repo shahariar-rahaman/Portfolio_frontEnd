@@ -7,6 +7,7 @@ import FigmaEdit from './pages/FigmaEdit';
 import ReactEdit from './pages/ReactEdit';
 import BasicEdit from './pages/BasicEdit';
 import Registration from './pages/Registration';
+import BlogUpdate from './pages/BlogUpdate'
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/figmaEdit" element={<FigmaEdit/>}></Route>
           <Route path="/reactEdit" element={<ReactEdit/>}></Route>
           <Route path="/basicEdit" element={<BasicEdit/>}></Route>
+          <Route path="/blogUpdate" element={<BlogUpdate/>}></Route>
         </Routes>
       </BrowserRouter>
     </>

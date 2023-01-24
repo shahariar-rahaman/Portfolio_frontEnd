@@ -4,9 +4,11 @@ import {store} from '../ContextProvider'
 import JoditEditor from 'jodit-react';
 import { useState, useRef} from 'react'
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const FigmaEdit = () => {
     const editor = useRef(null);
+    const navigator = useNavigate()
     const {state,dispatch} = useContext(store)
     const [content, setContent] = useState('')
     const [url,setUrl] = useState('')
@@ -97,7 +99,10 @@ const FigmaEdit = () => {
         }
   return (
     <Container>
+          <div className='blogEditor'>
           <Form>
+          <p className='content'>Post Figma</p>
+          <div className='contentWidth'>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Control type="text" placeholder="Title" onChange={(e)=>setTitle(e.target.value)}/>
           </Form.Group>
@@ -156,11 +161,12 @@ const FigmaEdit = () => {
         </div>
       ))}
     </div>
-          <Button onClick={handleSubmit} variant="primary" type="submit" className="mt-3">
+          <Button onClick={handleSubmit} variant="primary" type="submit" className="mt-3 buttonStyle">
             Submit
           </Button>
+        </div>
         </Form>
-        
+        </div>
     </Container>
   )
 }

@@ -100,7 +100,10 @@ const FigmaEdit = () => {
         }
   return (
     <Container>
+         <div className='blogEditor'>
           <Form>
+          <p className='content'>Post Others</p>
+          <div className='contentWidth'>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Control type="text" placeholder="Title" onChange={(e)=>setTitle(e.target.value)}/>
           </Form.Group>
@@ -162,8 +165,9 @@ const FigmaEdit = () => {
           <Button onClick={handleSubmit} variant="primary" type="submit" className="mt-3">
             Submit
           </Button>
+          </div>
         </Form>
-        
+        </div>
     </Container>
   )
 }

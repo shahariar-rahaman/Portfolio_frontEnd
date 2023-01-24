@@ -6,8 +6,22 @@
     padding:0;
     box-sizing: border-box;
 }
+h1,
+h1,
+h3,
+h4,
+h5,
+h6,
+p {
+    margin: 0;
+}
+.itemSize{
+    height: 600px;
+}
 .size{
-    height: 650px;
+    height: 100%;
+    object-fit:cover;
+    filter: brightness(0.3);
 }
 .navLink{
     text-decoration:none;
@@ -15,9 +29,15 @@
 .image-height{
     height:210px;
 }
-.nav-area{
+.navArea{
     padding: 10px 0;
-    background-color: #EA3A60;
+    background-color: rgba(38, 38, 38,0.4);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100000;
+    transition: 0.6s;
 }
 .icon{
     color: white;
@@ -29,7 +49,7 @@
     color: black;
 }
 .navButton{
-    color: white;
+    color: #ffffff;
     padding: 0 10px;
     font-size: 16px;
     font-family: 'Poppins', sans-serif;
@@ -37,19 +57,46 @@
     transition: all linear 0.4s;
 }
 .navButton:hover{
-    color:black
+    color:#FFD333;
+}
+.dropdown-menu[data-bs-popper] {
+    background-color: #26262666;
+}
+.dropdown-item-bg-color:hover{
+    background-color: #050505;
+}
+.dropdown-title-color {
+    color: #ffffff;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    transition: all linear 0.4s;
+}
+.dropdown-title-color:hover{
+    color:#ffffff
+}
+.dropdownStyle{
+    font-size: 15px;
+    font-family: 'Poppins', sans-serif;
+    transition: all linear .4s;
+    color: #ffffff;
+    
+}
+.dropdownStyle:hover{
+    color: #ffffff;
 }
 .regLog{
     font-family: 'Poppins', sans-serif;
     font-size: 40px;
     font-weight:bolder;
     text-align: center;
-    background-color: #EA3A60;
+    background-color: #FFD333;
     color: white;
 }
 .regLogForm{
     width:fit-content;
     margin: 0 auto;
+    padding: 50px 0;
 }
 .regLogSubmit{
     display: flex;
@@ -59,13 +106,13 @@
 }
 .regLogSubmit Button{
     background-color: #ffffff!important;
-    border: 1px solid black;
+    border: 1px solid #000000;
     transition: all linear .4s;
-    color:black;
+    color:#000000;
     margin:10px 0;
 }
 .regLogSubmit Button:hover {
-    background-color: #EA3A60!important;
+    background-color: #FFD333!important;
     border: none;
 }
 .already{
@@ -73,39 +120,27 @@
     justify-content: center;
 }
 .loginReg:hover{
- color: #EA3A60;   
+ color: #FFD333;   
 }
 .registrationLog{
-    border: 5px solid #EA3A60;
+    border: 5px solid #FFD333;
     margin: 100px;
     border-radius: 6px;
-}
-.position{
-    position: relative;
 }
 .time {
     color: white;
     font-family: 'Poppins', sans-serif;
     font-size: 20px;
     position: absolute;
-    top: 13px;
-    left: 362px;
+    top: 23px;
+    left: 640px;
 }
-.dropdownStyle{
-    font-size: 15px;
-    font-family: 'Poppins', sans-serif;
-    transition: all linear .4s;
-    color: black;
-}
-.dropdownStyle:hover{
-    font-size: 20px;
-    color: #EA3A60;
-}
+
 
 .figmaProject{
     font-size: 40px;
     font-family: 'Poppins', sans-serif;
-    border-bottom: 3px solid #EA3A60;
+    border-bottom: 3px solid #FFD333;
     display: inline;
     font-weight: bold;
 }
@@ -131,29 +166,29 @@
     display: inline-block;
 }
 .cardButton{
-    background-color: #EA3A60;
+    background-color: #FFD333;
     color: #ffffff;
     border: none;
     transition: all linear .4s;
 }
 .cardButton:hover{
     background-color: #ffffff;
-    color: #EA3A60;
+    color: #FFD333;
 }
 .cardShadow{
     border: none;
-    box-shadow: 10px 3px 3px #EA3A60;
+    box-shadow: 7px 3px 3px #FFD333;
 }
 .content{
     text-align: center;
     font-size: 40px;
     font-weight: 900;
-    background-color: #EA3A60;
+    background-color: #FFD333;
     color: white;
 }
 .blogEditor{
     margin: 100px 0;
-    border: 5px solid #EA3A60;
+    border: 5px solid #FFD333;
     border-radius: 6px;
 }
 .contentWidth{
@@ -161,7 +196,7 @@
     padding: 15px;
 }
 .buttonStyle{
-    background-color: #EA3A60;
+    background-color: #FFD333;
     border: none;
 }
 .submitButton{
@@ -177,4 +212,36 @@
 }
 .reactPadding{
     padding: 50px 0;
+}
+
+.blogImage {
+    width: 80%;
+    margin: 0 auto;
+    height: 470px;
+}
+.blogButton{
+    background-color: #FFD333;
+    color: #000000;
+    border: 0;
+    padding:5px;
+    width:75px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    transition: all linear .4s;
+}
+.delete:hover{
+    background-color: #ff0000!important;
+}
+.edit:hover{
+    background-color: #008000!important;
+}
+.blogButtonFlex{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }

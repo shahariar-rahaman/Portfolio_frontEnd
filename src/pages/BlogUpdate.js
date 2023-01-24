@@ -1,12 +1,11 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Container,Form,Button,InputGroup,Spinner } from 'react-bootstrap'
 import {store} from '../ContextProvider'
 import JoditEditor from 'jodit-react';
 import { useState, useRef} from 'react'
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-
-const BlogEdit = () => {
+const BlogUpdate = () => {
   const navigator = useNavigate()
   const editor = useRef(null);
   const {state,dispatch} = useContext(store)
@@ -16,7 +15,20 @@ const BlogEdit = () => {
   const [loading,setLoading] = useState(false)
   const[title,setTitle]=useState("")
   const [fileData, setFileData] = useState(null)
+  const [updateItem,setUpdateItem] = useState([])
   const URL=process.env.REACT_APP_BASE_URL
+  const postId = localStorage.getItem("id")
+  useEffect(()=>{
+    const handleUpdate = async (id)=>{
+        console.log("Hi")
+          const {data} = await axios.get(`${URL}/blogEdit/${id}`)
+          setTitle(data.title)
+          setContent(data.description)
+        }
+        handleUpdate(postId)
+  },[])
+  
+  
   const handleFileChange = (e) => {
         const file = e.target.files[0];
         const bodyFormData = new FormData();
@@ -42,31 +54,31 @@ const BlogEdit = () => {
       }
       setSpin(true)
     }
-  
+
     function handleSubmit(e){
     e.preventDefault()
-    async function submit(){
-      const {data} = await axios.post(`${URL}/blogEdit`,{
+    function submit(){
+      const {data} = axios.put(`${URL}/blogEdit/${postId}`,{
         id:state.userInfo._id,
         title:title,
         description:content,
         image:url
       })
+      .then(()=>{navigator('/blog');localStorage.getItem("id",null)})
     }
     submit()
-    navigator('/blog')
     }
   return (
   <>
     <Container>
     <div className='blogEditor'>
-        <p className='content'>Post Your Content</p>
+        <p className='content'>Update Your Content</p>
         <div className='contentWidth'>
         {
           state.userInfo?
           <Form>
           <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Control type="text" placeholder="Title" onChange={(e)=>setTitle(e.target.value)}/>
+            <Form.Control type="text" placeholder="Title" value={title} onChange={(e)=>setTitle(e.target.value)}/>
           </Form.Group>
           <JoditEditor
 			ref={editor}
@@ -78,8 +90,8 @@ const BlogEdit = () => {
         <Form.Control
           aria-label="Small"
           aria-describedby="inputGroup-sizing-sm" type='file' onChange={handleFileChange}/>
-        </InputGroup>
           <Button className='buttonStyle uploadSumission' onClick={handleUpload} >Upload</Button>
+        </InputGroup>
         {
           spin?
         <div className='submitButton'>
@@ -114,4 +126,4 @@ const BlogEdit = () => {
   )
 }
 
-export default BlogEdit
+export default BlogUpdate

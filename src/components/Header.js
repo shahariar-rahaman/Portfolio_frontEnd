@@ -24,10 +24,10 @@ setInterval(()=>{
       navigator("/");
     };
   return (
-    <Navbar expand="lg" className='nav-area'>
+    <Navbar expand="lg" className='navArea'>
       <Container className="position">
         <Link to="/" className='navLink'><Navbar.Brand><span className='icon'>Shahariar</span><span className='icon nav-icon'>Rahaman</span></Navbar.Brand></Link>
-          <span className='time'>{updatetime}</span>
+          {/* <span className='time'>{updatetime}</span> */}
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="m-auto d-flex align-items-center">
@@ -38,21 +38,21 @@ setInterval(()=>{
           </Nav>
           {
             state.userInfo?
-                <NavDropdown title={state.userInfo.name} id="nav-dropdown">
+                <NavDropdown title={state.userInfo.name} id="nav-dropdown" className="dropdown-title-color">
               {
                   state.userInfo.is_admin?
                   <>
-                  <NavDropdown.Item ><Link className='navLink dropdownStyle' to="/blogEdit">Blog Post</Link></NavDropdown.Item>
-                  <NavDropdown.Item ><Link className='navLink dropdownStyle' to="/figmaEdit">Figma Post</Link></NavDropdown.Item>
-                  <NavDropdown.Item ><Link className='navLink dropdownStyle' to="/reactEdit">React Post</Link></NavDropdown.Item>
-                  <NavDropdown.Item ><Link className='navLink dropdownStyle' to="/basicEdit">Basic Post</Link></NavDropdown.Item>
+                  <NavDropdown.Item className="dropdown-item-bg-color"><Link className='navLink dropdownStyle' to="/blogEdit">Blog Post</Link></NavDropdown.Item>
+                  <NavDropdown.Item className="dropdown-item-bg-color"><Link className='navLink dropdownStyle' to="/figmaEdit">Figma Post</Link></NavDropdown.Item>
+                  <NavDropdown.Item className="dropdown-item-bg-color"><Link className='navLink dropdownStyle' to="/reactEdit">React Post</Link></NavDropdown.Item>
+                  <NavDropdown.Item className="dropdown-item-bg-color"><Link className='navLink dropdownStyle' to="/basicEdit">Basic Post</Link></NavDropdown.Item>
                   </>
                   :
                   <Link className='navLink' to="/blogEdit"><NavDropdown.Item href="#action/3.1">Blog Post</NavDropdown.Item></Link>
 
               }
               <NavDropdown.Divider />
-              <NavDropdown.Item onClick={handleLogout}>Log Out</NavDropdown.Item>
+              <NavDropdown.Item className="dropdownStyle dropdown-item-bg-color" onClick={handleLogout}>Log Out</NavDropdown.Item>
             </NavDropdown>
             :
             <Link className='navLink' to="/registration"><span className='navButton'>SignIn/Login</span></Link>
