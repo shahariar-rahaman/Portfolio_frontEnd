@@ -48,7 +48,7 @@ setInterval(()=>{
                   <NavDropdown.Item className="dropdown-item-bg-color"><Link className='navLink dropdownStyle' to="/basicEdit">Basic Post</Link></NavDropdown.Item>
                   </>
                   :
-                  <Link className='navLink' to="/blogEdit"><NavDropdown.Item href="#action/3.1">Blog Post</NavDropdown.Item></Link>
+                  <Link className='navLink' to="/blogEdit"><NavDropdown.Item className='navLink dropdownStyle dropdown-item-bg-color'>Blog Post</NavDropdown.Item></Link>
 
               }
               <NavDropdown.Divider />
