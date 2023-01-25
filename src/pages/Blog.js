@@ -6,40 +6,36 @@ import { BsFillTrashFill } from 'react-icons/bs'
 import { store } from '../ContextProvider'
 import {Link, useNavigate} from 'react-router-dom'
 const Blog = () => {
-const {state,dispatch,updatetBlogData,setUpdateBlogData} = useContext(store)
+const {state,dispatch} = useContext(store)
 const [blogData,setBlogData] = useState([])
 const navigator = useNavigate();
 const URL=process.env.REACT_APP_BASE_URL
 
 useEffect(()=>{
     async function blog(){
-    const {data} = await axios.get(`${URL}/blogEdit`)
+    const {data} = await axios.get(`${URL}/blogPost`)
     setBlogData(data)
 }blog()
 },[])
 
 const handleDelete = async (id) =>{
-    const {data} = await axios.delete(`${URL}/blogEdit/${id}`)
+    const {data} = await axios.delete(`${URL}/blogPost/${id}`)
     const updatetBlog = blogData.filter((response)=>response._id!==data._id)
     setBlogData(updatetBlog)
 }
-const [data,setdata] = useState("")
 const handleUpdate = (id)=>{
-  // console.log("Hi")
-  //   const {data} = await axios.get(`${URL}/blogEdit/${id}`)
-  // setUpdateBlogData(id)
   localStorage.setItem("id",id)
   navigator('/blogUpdate')
 }
-  console.log(updatetBlogData)
   
   return (
-    <>
+    <div >
     {blogData.map((item)=>(
-            <Container key={item._id} className="mt-5">
+            <Container >
+            <div key={item._id} className="blogButtonPosition">
             <Card xs={12} style={{border:'none'}}>
             <ListGroup className="list-group-flush">
-              <ListGroup.Item>{item.name}</ListGroup.Item>
+              <ListGroup.Item><span className='author'>Author:</span> <span className="authorName">{item.name}</span></ListGroup.Item>
             </ListGroup>
             <Card.Body>
               <Card.Title className='p-0 m-0'>{item.title}</Card.Title>
@@ -56,18 +52,14 @@ const handleUpdate = (id)=>{
             <Button className="mt-3 blogButton edit" onClick={()=>handleUpdate(item._id)}><AiFillEdit/><p>Edit</p></Button>
             </div>
             :
-            <>
-            <div className='blogButtonFlex'>
-            <Button className="mt-3 blogButton delete" disabled><BsFillTrashFill/><p>Delete</p></Button>
-            <Button className="mt-3 blogButton edit" disabled><AiFillEdit/><p>Edit</p></Button>
-            </div>
-            </>
+            ""
           }
+          </div>
           </Container>
         ))}
 
         
-    </>
+    </div>
   )
 }
 

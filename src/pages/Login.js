@@ -46,7 +46,7 @@ const Login = () => {
 
   return (
     <Container>
-    <div class="registrationLog">
+    <div key={6} class="registrationLog">
     <p className='regLog'>Login</p>
     <div className='regLogForm'>
     <Form.Group className="mb-3">

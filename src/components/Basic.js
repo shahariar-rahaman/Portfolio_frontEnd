@@ -7,7 +7,7 @@ const Basic = () => {
   const URL=process.env.REACT_APP_BASE_URL
   useEffect(()=>{
     async function basic(){
-      let {data} = await axios.get(`${URL}/basic`)
+      let {data} = await axios.get(`${URL}/basicPost`)
       setBasicData(data)
     }
     basic()
@@ -15,7 +15,7 @@ const Basic = () => {
   return (
     <>
    <Container className='mt-5'>
-        <p className="figmaProject">Others Project</p>
+        <p ley={12} className="figmaProject">Others Project</p>
         <Row>
         {
             basicData.map(item=>(

@@ -12,53 +12,38 @@ const BlogUpdate = () => {
   const [content, setContent] = useState('')
   const[spin,setSpin] = useState(false)
   const [url,setUrl] = useState('')
-  const [loading,setLoading] = useState(false)
   const[title,setTitle]=useState("")
-  const [fileData, setFileData] = useState(null)
-  const [updateItem,setUpdateItem] = useState([])
   const URL=process.env.REACT_APP_BASE_URL
   const postId = localStorage.getItem("id")
   useEffect(()=>{
     const handleUpdate = async (id)=>{
         console.log("Hi")
-          const {data} = await axios.get(`${URL}/blogEdit/${id}`)
+          const {data} = await axios.get(`${URL}/blogPost/${id}`)
           setTitle(data.title)
           setContent(data.description)
         }
         handleUpdate(postId)
   },[])
-  
-  
-  const handleFileChange = (e) => {
-        const file = e.target.files[0];
-        const bodyFormData = new FormData();
-        bodyFormData.append('file', file);
-        setFileData(bodyFormData)
+ 
+  const handleFileUpload = async (e) => {
+    e.preventDefault();
+    setSpin(true);
+    const file = e.target.files[0];
+    const bodyFormData = new FormData();
+    bodyFormData.append('file', file);
+    try {
+      const { data } = await axios.post(`${URL}/upload`, bodyFormData);
+      setUrl(data.secure_url);
+    } catch (err) {
+      console.log(err);
     }
-    const handleUpload = async (e) => {
-    e.preventDefault()
-      setLoading(true)
-      const config = {
-          headers: {
-              'Content-Type': 'multipart/form-data',
-          }
-      }
-      try {
-          const { data } = await axios.post(`${URL}/upload`, fileData, config)
-          setUrl(data.secure_url)
-          setLoading(false)
-      }
-      catch(err){
-        console.log(err)
-        setLoading(false)
-      }
-      setSpin(true)
-    }
+    setSpin(false);
+  };
 
     function handleSubmit(e){
     e.preventDefault()
     function submit(){
-      const {data} = axios.put(`${URL}/blogEdit/${postId}`,{
+      const {data} = axios.put(`${URL}/blogPost/${postId}`,{
         id:state.userInfo._id,
         title:title,
         description:content,
@@ -67,11 +52,12 @@ const BlogUpdate = () => {
       .then(()=>{navigator('/blog');localStorage.getItem("id",null)})
     }
     submit()
+    navigator("/blog")
     }
   return (
   <>
     <Container>
-    <div className='blogEditor'>
+    <div key ={3} className='blogEditor'>
         <p className='content'>Update Your Content</p>
         <div className='contentWidth'>
         {
@@ -89,31 +75,17 @@ const BlogUpdate = () => {
     <InputGroup size="sm" className="mt-3">
         <Form.Control
           aria-label="Small"
-          aria-describedby="inputGroup-sizing-sm" type='file' onChange={handleFileChange}/>
-          <Button className='buttonStyle uploadSumission' onClick={handleUpload} >Upload</Button>
+          aria-describedby="inputGroup-sizing-sm" type='file' placeholder='input your image' onChange={handleFileUpload}/>
         </InputGroup>
         {
           spin?
-        <div className='submitButton'>
-          <Button className="buttonStyle mt-3" onClick={handleSubmit} type="submit">
-            Submit
-          </Button>
-          </div>
+          <div>
+          <Spinner animation="border" variant="warning" />
+              <Button className="buttonStyle buttonFlex mt-3" disabled>Submit</Button>
+        </div>
           :
-          <div className='submitButton'>
-          <Button className="buttonStyle mt-3" disabled>
-        <Spinner
-          as="span"
-          animation="grow"
-          size="sm"
-          role="status"
-          aria-hidden="true"
-        />
-        Loading...
-      </Button>
-      </div>
+              <Button className="buttonStyle buttonFlex mt-3" onClick={handleSubmit} type="submit">Submit</Button>
         }
-        
         </Form>
           
           :

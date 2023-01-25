@@ -6,48 +6,36 @@ import { useState, useRef} from 'react'
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-const BlogEdit = () => {
+const BlogPost = () => {
   const navigator = useNavigate()
   const editor = useRef(null);
   const {state,dispatch} = useContext(store)
   const [content, setContent] = useState('')
   const[spin,setSpin] = useState(false)
   const [url,setUrl] = useState('')
-  const [loading,setLoading] = useState(false)
   const[title,setTitle]=useState("")
-  const [fileData, setFileData] = useState(null)
   const URL=process.env.REACT_APP_BASE_URL
-  const handleFileChange = (e) => {
-        const file = e.target.files[0];
-        const bodyFormData = new FormData();
-        bodyFormData.append('file', file);
-        setFileData(bodyFormData)
+  const handleFileUpload = async (e) => {
+    e.preventDefault();
+    setSpin(true);
+    const file = e.target.files[0];
+    const bodyFormData = new FormData();
+    bodyFormData.append('file', file);
+    try {
+      const { data } = await axios.post(`${URL}/upload`, bodyFormData);
+      setUrl(data.secure_url);
+    } catch (err) {
+      console.log(err);
     }
-    const handleUpload = async (e) => {
-    e.preventDefault()
-      setLoading(true)
-      const config = {
-          headers: {
-              'Content-Type': 'multipart/form-data',
-          }
-      }
-      try {
-          const { data } = await axios.post(`${URL}/upload`, fileData, config)
-          setUrl(data.secure_url)
-          setLoading(false)
-      }
-      catch(err){
-        console.log(err)
-        setLoading(false)
-      }
-      setSpin(true)
-    }
+    setSpin(false);
+  };
   
     function handleSubmit(e){
     e.preventDefault()
     async function submit(){
-      const {data} = await axios.post(`${URL}/blogEdit`,{
+      const {data} = await axios.post(`${URL}/blogPost`,{
         id:state.userInfo._id,
+        name:state.userInfo.name,
         title:title,
         description:content,
         image:url
@@ -57,8 +45,9 @@ const BlogEdit = () => {
     navigator('/blog')
     }
   return (
-  <>
+    <div className="backGround">
     <Container>
+  <div key ={2} >
     <div className='blogEditor'>
         <p className='content'>Post Your Content</p>
         <div className='contentWidth'>
@@ -77,31 +66,17 @@ const BlogEdit = () => {
     <InputGroup size="sm" className="mt-3">
         <Form.Control
           aria-label="Small"
-          aria-describedby="inputGroup-sizing-sm" type='file' onChange={handleFileChange}/>
+          aria-describedby="inputGroup-sizing-sm" type='file' placeholder='input your image' onChange={handleFileUpload}/>
         </InputGroup>
-          <Button className='buttonStyle uploadSumission' onClick={handleUpload} >Upload</Button>
         {
           spin?
-        <div className='submitButton'>
-          <Button className="buttonStyle mt-3" onClick={handleSubmit} type="submit">
-            Submit
-          </Button>
-          </div>
+          <div>
+          <Spinner animation="border" variant="warning" />
+              <Button className="buttonStyle buttonFlex mt-3" disabled>Submit</Button>
+        </div>
           :
-          <div className='submitButton'>
-          <Button className="buttonStyle mt-3" disabled>
-        <Spinner
-          as="span"
-          animation="grow"
-          size="sm"
-          role="status"
-          aria-hidden="true"
-        />
-        Loading...
-      </Button>
-      </div>
+              <Button className="buttonStyle buttonFlex mt-3" onClick={handleSubmit} type="submit">Submit</Button>
         }
-        
         </Form>
           
           :
@@ -109,9 +84,10 @@ const BlogEdit = () => {
         }
         </div>
         </div>
+  </div>
     </Container>
-  </>
+    </div>
   )
 }
 
-export default BlogEdit
+export default BlogPost

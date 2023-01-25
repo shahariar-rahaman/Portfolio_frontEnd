@@ -8,14 +8,14 @@ const FigmaProject = () => {
   const URL=process.env.REACT_APP_BASE_URL
   useEffect(()=>{
     async function figma(){
-      let {data} = await axios.get(`${URL}/figmaEdit`)
+      let {data} = await axios.get(`${URL}/figmaPost`)
       setFigmaData(data)
     }
     figma()
   },[])
   return (
     <>
-    <Container className='mt-5'>
+    <Container key={11} className='mt-5'>
         <p className="figmaProject">Figma Project</p>
         <Row>
         {

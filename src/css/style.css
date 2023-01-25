@@ -187,13 +187,23 @@ p {
     color: white;
 }
 .blogEditor{
-    margin: 100px 0;
-    border: 5px solid #FFD333;
-    border-radius: 6px;
+    padding: 100px 0;
 }
 .contentWidth{
     margin: 0 auto;
-    padding: 15px;
+    padding: 15px 0;
+}
+.blogButtonFlex{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    position: absolute;
+    top:0;
+    right: 0;
+}
+.blogButtonPosition{
+    position: relative;
+    margin-top: 70px;
 }
 .buttonStyle{
     background-color: #FFD333;
@@ -215,9 +225,15 @@ p {
 }
 
 .blogImage {
-    width: 80%;
+    width: 30%;
     margin: 0 auto;
-    height: 470px;
+    height: 290px;
+    transition: all linear .4s;
+}
+.blogImage:hover{
+    margin: 0 auto;
+    width: 100%;
+    height: 100%;
 }
 .blogButton{
     background-color: #FFD333;
@@ -237,11 +253,23 @@ p {
 .delete:hover{
     background-color: #ff0000!important;
 }
+.edit{
+    margin-left: 15px;
+}
 .edit:hover{
     background-color: #008000!important;
 }
-.blogButtonFlex{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+
+.backGround{
+    background-color:#dddddd;
+    height: 100vh;
+}
+.author{
+    font-size: 20px;
+    font-weight: bold;
+    color: #FFD333;
+}
+.authorName{
+    font-size: 20px;
+    font-weight: 400;
 }

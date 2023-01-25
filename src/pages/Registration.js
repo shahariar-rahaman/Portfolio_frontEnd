@@ -49,7 +49,7 @@ const Registration = () => {
     }
     return (
     <Container>
-    <div className='registrationLog'>
+    <div key={5} className='registrationLog'>
     <p className='regLog'>Registration</p>
     <div className='regLogForm'>
     <Form.Group className="mb-3">

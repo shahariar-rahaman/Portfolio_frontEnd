@@ -8,14 +8,15 @@ const ReactProject = () => {
   const URL=process.env.REACT_APP_BASE_URL
   useEffect(()=>{
     async function react(){
-      let {data} = await axios.get(`${URL}/reactEdit`)
+      let {data} = await axios.get(`${URL}/reactPost`)
       setReactData(data)
     }
     react()
   },[])
   return (
-    <div className="reactBackround">
-        <Container className='mt-5 reactPadding'>
+  <div className="reactBackround">
+        <Container>
+    <div key={8} className="mt-5 reactPadding">
         <p className="figmaProject">React Project</p>
         <Row>
         {
@@ -42,8 +43,9 @@ const ReactProject = () => {
             ))
         }
     </Row>
-        </Container>
     </div>
+        </Container>
+        </div>
   )
 }
 

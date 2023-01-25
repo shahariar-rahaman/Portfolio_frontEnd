@@ -24,7 +24,7 @@ setInterval(()=>{
       navigator("/");
     };
   return (
-    <Navbar expand="lg" className='navArea'>
+    <Navbar key={10} expand="lg" className='navArea'>
       <Container className="position">
         <Link to="/" className='navLink'><Navbar.Brand><span className='icon'>Shahariar</span><span className='icon nav-icon'>Rahaman</span></Navbar.Brand></Link>
           {/* <span className='time'>{updatetime}</span> */}
@@ -42,10 +42,10 @@ setInterval(()=>{
               {
                   state.userInfo.is_admin?
                   <>
-                  <NavDropdown.Item className="dropdown-item-bg-color"><Link className='navLink dropdownStyle' to="/blogEdit">Blog Post</Link></NavDropdown.Item>
-                  <NavDropdown.Item className="dropdown-item-bg-color"><Link className='navLink dropdownStyle' to="/figmaEdit">Figma Post</Link></NavDropdown.Item>
-                  <NavDropdown.Item className="dropdown-item-bg-color"><Link className='navLink dropdownStyle' to="/reactEdit">React Post</Link></NavDropdown.Item>
-                  <NavDropdown.Item className="dropdown-item-bg-color"><Link className='navLink dropdownStyle' to="/basicEdit">Basic Post</Link></NavDropdown.Item>
+                  <NavDropdown.Item className="dropdown-item-bg-color"><Link className='navLink dropdownStyle' to="/blogPost">Blog Post</Link></NavDropdown.Item>
+                  <NavDropdown.Item className="dropdown-item-bg-color"><Link className='navLink dropdownStyle' to="/figmaPost">Figma Post</Link></NavDropdown.Item>
+                  <NavDropdown.Item className="dropdown-item-bg-color"><Link className='navLink dropdownStyle' to="/reactPost">React Post</Link></NavDropdown.Item>
+                  <NavDropdown.Item className="dropdown-item-bg-color"><Link className='navLink dropdownStyle' to="/basicPost">Basic Post</Link></NavDropdown.Item>
                   </>
                   :
                   <Link className='navLink' to="/blogEdit"><NavDropdown.Item className='navLink dropdownStyle dropdown-item-bg-color'>Blog Post</NavDropdown.Item></Link>

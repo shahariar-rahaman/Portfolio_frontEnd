@@ -6,12 +6,12 @@ import Basic from '../components/Basic'
 
 const Home = () => {
   return (
-    <>
+    <div key={7} className='homeBackground'>
    <Banner/>
    <FigmaProject/>
    <ReactProject/>
    <Basic/>
-    </>
+    </div>
   )
 }
 
