@@ -34,7 +34,7 @@ const Header = () => {
             <Nav.Link ><Link className='navLink' to="/"><span className='navButton'>Home</span></Link></Nav.Link>
             <Nav.Link ><Link className='navLink' to="about"><span className='navButton'>About</span></Link></Nav.Link>
             <Nav.Link ><Link className='navLink' to="about"><span className='navButton'>Resume</span></Link></Nav.Link>
-            <Nav.Link><Link className='navLink' to="/blog"><span className='navButton'>My Blog</span></Link></Nav.Link>
+            <Nav.Link><Link className='navLink' to="/blog"><span className='navButton'>Blog</span></Link></Nav.Link>
           </Nav>
           {
             state.userInfo?

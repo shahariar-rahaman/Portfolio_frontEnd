@@ -12,6 +12,10 @@ const Banner = () => {
           alt="First slide"
         />
         </div>
+        <Carousel.Caption>
+          <h3 className='slide-caption'>Take Off Programming contest Fall 2018</h3>
+          <p>This was my first achievement at university (Position 6th)</p>
+        </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
       <div className="itemSize">
@@ -21,6 +25,10 @@ const Banner = () => {
           alt="Second slide"
         />
         </div>
+        <Carousel.Caption>
+          <h3 className='slide-caption'>CTG Tour</h3>
+          <p>It was a good day (Chandranath Hill)</p>
+        </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
       <div className="itemSize">
@@ -30,6 +38,10 @@ const Banner = () => {
           alt="Third slide"
         />
       </div>
+      <Carousel.Caption>
+          <h3 className='slide-caption'>DIU 10th Convocation 2023</h3>
+          <p>Now I can say I've earned my degree.</p>
+        </Carousel.Caption>
       </Carousel.Item>
     </Carousel>
     </div>
