@@ -4,14 +4,14 @@ import {Link, useNavigate} from 'react-router-dom'
 import { store } from '../ContextProvider'
 
 const Header = () => {
-const[updatetime,setUpdateTime] = useState("")
-const time = ()=>{
-  const date = new Date().toLocaleTimeString();
-  return date
-}
-setInterval(()=>{
-  setUpdateTime(time())
-},0)
+// const[updatetime,setUpdateTime] = useState("")
+// const time = ()=>{
+//   const date = new Date().toLocaleTimeString();
+//   return date
+// }
+// setInterval(()=>{
+//   setUpdateTime(time())
+// },0)
   const navigator = useNavigate()
   const {state,dispatch}=useContext(store)
     const styles={
