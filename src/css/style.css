@@ -21,7 +21,7 @@ p {
 .size{
     height: 100%;
     object-fit:cover;
-    filter: brightness(0.3);
+    filter: brightness(0.2);
 }
 .navLink{
     text-decoration:none;
