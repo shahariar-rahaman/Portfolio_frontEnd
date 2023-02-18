@@ -8,7 +8,7 @@ const Banner = () => {
       <div className="itemSize">
         <img
           className="d-block w-100 size"
-          src="https://images.unsplash.com/photo-1673942393203-fe61f45b4479?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+          src="https://res.cloudinary.com/drzqify5h/image/upload/v1676736396/DSC_0299_oopyaj.jpg"
           alt="First slide"
         />
         </div>
@@ -17,7 +17,7 @@ const Banner = () => {
       <div className="itemSize">
         <img
           className="d-block w-100 size"
-          src="https://images.unsplash.com/photo-1671725501844-1e6d0081bf64?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+          src="https://res.cloudinary.com/drzqify5h/image/upload/v1676736564/IMG_20220331_132551_gv3ery.jpg"
           alt="Second slide"
         />
         </div>
@@ -26,7 +26,7 @@ const Banner = () => {
       <div className="itemSize">
         <img
           className="d-block w-100 size"
-          src="https://images.unsplash.com/photo-1671725779305-bff966b40cbe?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+          src="https://res.cloudinary.com/drzqify5h/image/upload/v1676736673/IMG_20230209_091148_uuxwwr.jpg"
           alt="Third slide"
         />
       </div>
