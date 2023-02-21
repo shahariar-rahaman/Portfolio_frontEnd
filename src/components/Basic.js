@@ -33,7 +33,7 @@ const Basic = () => {
                 </span>
               ))}
                 <div className="d-flex justify-content-center">
-                <Button className='mt-3 cardButton d-flex align-items-center'><FaLink/><span className="visit">Visit</span></Button>
+                <Button className='mt-3 cardButton d-flex align-items-center' href={item.link}><FaLink/><span className="visit">Visit</span></Button>
                 </div>
               </Card.Body>
             </Card>

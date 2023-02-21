@@ -71,7 +71,7 @@ const BasicPost = () => {
 			onBlur={newContent => setContent(newContent)} 
 			onChange={newContent => {}}/>
 			<Form.Group className="mt-3" controlId="formBasicEmail">
-            <Form.Control type="text" placeholder="Title" onChange={(e)=>setLink(e.target.value)}/>
+            <Form.Control type="text" placeholder="link" onChange={(e)=>setLink(e.target.value)}/>
           </Form.Group>
           <InputGroup size="sm" className="mt-3">
         <Form.Control
